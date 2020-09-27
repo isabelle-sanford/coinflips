@@ -28,7 +28,7 @@ for i in range(16):
                     rows5[i + j + k + l], 
                     rows5[i + j + k + l + m]])
 
-print(len(quintuples))
+#print(len(quintuples))
 
 # ZIP INTO COLUMNS & REDUCE
 quintT = [list(zip(*rows)) for rows in quintuples]
@@ -86,7 +86,7 @@ while index1 < len(quint_cols):
 quint_rows = [list(zip(*q)) for q in quint_cols]
 quint_rows = [[list(r) for r in grid] for grid in quint_rows]
 
-print(quint_rows[3])
+print(quint_rows[104])
 
 
 
