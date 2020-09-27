@@ -78,11 +78,11 @@ while index1 < len(quint_cols):
     
     index1 += 1
 
-#print(len(quint_cols))
+print(quint_cols)
 
 # transpose back to rows
-quint_rows = list(zip(quint_cols))
-#print(len(quint_rows))
+#quint_rows = list(zip(quint_cols))
+#print(quint_rows)
 
 
 
