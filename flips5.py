@@ -33,7 +33,7 @@ print(len(quintuples))
 # ZIP INTO COLUMNS & REDUCE
 quintT = [list(zip(*rows)) for rows in quintuples]
 
-#print(len(quintT))
+# print(quintuples[3])
 
 
 # take out impossible starting columns
@@ -78,11 +78,15 @@ while index1 < len(quint_cols):
     
     index1 += 1
 
-print(quint_cols)
+# print(quint_cols[3])
+
+# print(list(zip(*quint_cols[3])))
 
 # transpose back to rows
-#quint_rows = list(zip(quint_cols))
-#print(quint_rows)
+quint_rows = [list(zip(*q)) for q in quint_cols]
+quint_rows = [[list(r) for r in grid] for grid in quint_rows]
+
+print(quint_rows[3])
 
 
 
