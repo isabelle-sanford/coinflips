@@ -33,22 +33,60 @@ def possible_moves(grid, row):
     
     return possible
 
+fullgrid = [[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1]]
+grid_1move = [[1,1,1,1,1],[0,0,0,1,1],[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1]]
+
+#print(possible_moves(grid_1move, False))
+
 def moves_max(grid):
     lost = False
     row = True
-    gridp = grid
     num_moves = 0
 
-    curr_grids = grid
+    curr_grids = [grid]
+    temp_grids = curr_grids.copy()
+    next_grids = []
 
     while lost == False:
-        move = possible_moves(gridp, row)
-        if len(move) == 0:
-            # lost
-        elif len(move) == 1:
-            move(gridp, move, row)
-            # add to counter
+        # loop through grids on current step
+        print(temp_grids)
+        for g in curr_grids:
+            #print(g)
+            moves = possible_moves(g, row)
+            # remove all grids with no next step
+            if len(moves) == 0:
+                temp_grids.remove(g)
+                print("wrong length")
+            else:
+                # add all next steps to next_grids
+                for m in moves:
+                    next_grids.append(move(g, m, row))
+                    print(next_grids)
+                    print(temp_grids)
+
+        #print(f"Grids that have a next step after {num_moves}: {temp_grids}")
+        #print(f"Starting grids for step {num_moves + 1}: {next_grids}")
+        print("----")
+
+        # reset curr/next/temp
+        curr_grids = next_grids
+        next_grids = []
+        temp_grids = curr_grids
+        
+        #print(len(curr_grids))
+
+        # check if all moves used up
+        if len(curr_grids) > 0:
+            num_moves += 1
+            row = not row
         else:
-            currtree = dict(grids=gridp, moves=move,turn=row)
-            for m in move:
-                move(gridp, m, row)
+            lost = True
+        
+    
+    return num_moves
+
+
+
+print(moves_max(gridex))
+
+
